@@ -5,8 +5,7 @@ import scalikejdbc._
 object RaceInfoDao {
 
   def createTable()(implicit s: DBSession): Boolean = {
-    sql"""
-create table if not exists race_info (
+    sql"""create table if not exists race_info (
   id integer primary key autoincrement,
 
   race_name     text    not null,

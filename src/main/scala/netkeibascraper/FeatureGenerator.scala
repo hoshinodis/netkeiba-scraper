@@ -4,32 +4,6 @@ import scalikejdbc._
 
 import scala.util.Try
 
-object FeatureGenerator {
-
-  def iterator()(implicit s: DBSession): Iterator[FeatureGenerator] = {
-
-    val race_infos = {
-      sql"select race_id, horse_number from race_result".
-        map(rs => (rs.int("race_id"), rs.int("horse_number"))).
-        list.
-        apply
-    }
-
-    var count = 0
-    val totalCount = race_infos.size.toDouble
-
-    race_infos.
-      toIterator.
-      map{ case (race_id, horse_number) =>
-        count += 1
-        if (count % 1000 == 0)
-          println("処理中 ... %7.3f％完了".format(100.0 * count / totalCount))
-        new FeatureGenerator(race_id, horse_number)
-      }
-  }
-
-}
-
 class FeatureGenerator(
                         val race_id: Int,
                         val horse_number: Int
@@ -913,5 +887,31 @@ limit 1
   val femaleOnly: Boolean = {
     race_class.contains("牝")
   }
+}
+
+object FeatureGenerator {
+
+  def iterator()(implicit s: DBSession): Iterator[FeatureGenerator] = {
+
+    val race_infos = {
+      sql"select race_id, horse_number from race_result".
+        map(rs => (rs.int("race_id"), rs.int("horse_number"))).
+        list.
+        apply
+    }
+
+    var count = 0
+    val totalCount = race_infos.size.toDouble
+
+    race_infos.
+      toIterator.
+      map{ case (race_id, horse_number) =>
+        count += 1
+        if (count % 1000 == 0)
+          println("処理中 ... %7.3f％完了".format(100.0 * count / totalCount))
+        new FeatureGenerator(race_id, horse_number)
+      }
+  }
+
 }
 
