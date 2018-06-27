@@ -1,5 +1,4 @@
-package netkeibascraper
-
+package netkeibascraper.raceresult
 
 case class RaceResult (
   race_id: Int,

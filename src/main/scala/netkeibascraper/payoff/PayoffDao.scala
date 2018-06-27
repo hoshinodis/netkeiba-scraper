@@ -1,4 +1,4 @@
-package netkeibascraper
+package netkeibascraper.payoff
 
 import scalikejdbc._
 

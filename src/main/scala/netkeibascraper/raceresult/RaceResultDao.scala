@@ -1,4 +1,4 @@
-package netkeibascraper
+package netkeibascraper.raceresult
 
 import scalikejdbc._
 
@@ -34,6 +34,7 @@ create table if not exists race_result (
   foreign key (race_id) references race_info (id)
 );""".execute.apply
 
+/*
     sql"""
 create index
   race_id_idx
@@ -68,6 +69,7 @@ create index
 on
   race_result (race_id, owner_id);
 """.execute.apply
+*/
   }
 
   def insert(rr: RaceResult)(implicit s: DBSession): Int = {

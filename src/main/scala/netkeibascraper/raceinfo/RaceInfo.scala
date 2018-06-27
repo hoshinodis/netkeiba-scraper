@@ -1,4 +1,4 @@
-package netkeibascraper
+package netkeibascraper.raceinfo
 
 case class RaceInfo (
   race_name: String,

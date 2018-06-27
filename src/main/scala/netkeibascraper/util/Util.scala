@@ -1,4 +1,4 @@
-package netkeibascraper
+package netkeibascraper.util
 
 import java.text.SimpleDateFormat
 import java.util.{Calendar, Date}

@@ -1,4 +1,4 @@
-package netkeibascraper
+package netkeibascraper.payoff
 
 case class Payoff (
   race_id: Int,

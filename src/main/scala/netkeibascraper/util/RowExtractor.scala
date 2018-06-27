@@ -1,7 +1,10 @@
-package netkeibascraper
+package netkeibascraper.util
 
 import java.io.{File, StringReader}
 
+import netkeibascraper.payoff.{Payoff, PayoffDao}
+import netkeibascraper.raceinfo.{RaceInfo, RaceInfoDao}
+import netkeibascraper.raceresult.{RaceResult, RaceResultDao}
 import nu.validator.htmlparser.sax.HtmlParser
 import org.apache.commons.io.FilenameUtils
 import org.xml.sax.InputSource

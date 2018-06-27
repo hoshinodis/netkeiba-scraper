@@ -1,4 +1,4 @@
-package netkeibascraper
+package netkeibascraper.scraper
 
 import java.io.File
 

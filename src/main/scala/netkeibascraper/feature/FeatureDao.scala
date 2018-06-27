@@ -1,5 +1,6 @@
-package netkeibascraper
+package netkeibascraper.feature
 
+import netkeibascraper.util.Util
 import scalikejdbc._
 
 object FeatureDao {

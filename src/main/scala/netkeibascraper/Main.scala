@@ -1,5 +1,11 @@
 package netkeibascraper
 
+import netkeibascraper.feature.FeatureDao
+import netkeibascraper.payoff.PayoffDao
+import netkeibascraper.raceinfo.RaceInfoDao
+import netkeibascraper.raceresult.RaceResultDao
+import netkeibascraper.scraper.{RaceListScraper, RaceScraper}
+import netkeibascraper.util.RowExtractor
 import scalikejdbc._
 
 object Main {
@@ -13,7 +19,7 @@ object Main {
     args.headOption match {
       case Some("collecturl") =>
         //レース結果が載っているURLを収集して「race_url.txt」に保存する。
-        val pastYears = 3 //過去???年分のURLを収集する
+        val pastYears = 1 //過去???年分のURLを収集する
         RaceListScraper.scrape(period = 12 * pastYears)
       case Some("scrapehtml") =>
         //レース結果のHTMLをスクレイピングしてhtmlフォルダに保存する。HTMLをまるごとスクレイピングするので結構時間がかかる。

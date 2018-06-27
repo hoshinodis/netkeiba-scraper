@@ -1,5 +1,7 @@
-package netkeibascraper
+package netkeibascraper.feature
 
+import netkeibascraper.raceinfo.{RaceInfo, RaceInfoDao}
+import netkeibascraper.util.Util
 import scalikejdbc._
 
 import scala.util.Try

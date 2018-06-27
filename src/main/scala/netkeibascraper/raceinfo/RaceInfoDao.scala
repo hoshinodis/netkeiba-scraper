@@ -1,4 +1,4 @@
-package netkeibascraper
+package netkeibascraper.raceinfo
 
 import scalikejdbc._
 
@@ -23,6 +23,7 @@ object RaceInfoDao {
   race_class    text    not null
 );""".execute.apply
 
+/*
     sql"""
 create index
   date_idx
@@ -36,6 +37,8 @@ create index
 on
   race_info (id, date);
 """.execute.apply
+*/
+
   }
 
   def insert(ri: RaceInfo)(implicit s: DBSession): Int = {
