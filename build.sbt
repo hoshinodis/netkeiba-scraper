@@ -14,5 +14,6 @@ libraryDependencies += "commons-lang" % "commons-lang" % "2.6"
 
 libraryDependencies ++= Seq(
   "org.scalikejdbc" %% "scalikejdbc"       % "3.2.2",
-  "ch.qos.logback"  %  "logback-classic"   % "1.2.3"
+  "ch.qos.logback"  %  "logback-classic"   % "1.2.3",
+  "mysql" % "mysql-connector-java" % "5.1.46"
 )

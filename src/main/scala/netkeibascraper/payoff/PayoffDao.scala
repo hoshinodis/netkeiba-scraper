@@ -7,11 +7,11 @@ object PayoffDao {
   def createTable()(implicit s: DBSession): Boolean = {
     sql"""
 create table if not exists payoff (
-  race_id      integer not null,
-  ticket_type  integer not null check(ticket_type between 0 and 7),
-  horse_number text    not null,
+  race_id      int     not null,
+  ticket_type  int     not null check(ticket_type between 0 and 7),
+  horse_number varchar(30)     not null,
   payoff       real    not null check(payoff >= 0),
-  popularity   integer not null check(popularity >= 0),
+  popularity   int     not null check(popularity >= 0),
   primary key (race_id, ticket_type, horse_number),
   foreign key (race_id) references race_info (id)
 )
@@ -20,7 +20,7 @@ create table if not exists payoff (
 
   def insert(dto: Payoff)(implicit s: DBSession): Int = {
     sql"""
-insert or replace into payoff (
+replace into payoff (
   race_id,
   ticket_type,
   horse_number,

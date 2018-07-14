@@ -11,8 +11,10 @@ import scalikejdbc._
 object Main {
 
   def initDBSetting(): Unit = {
-    Class.forName("org.sqlite.JDBC")
-    ConnectionPool.singleton("jdbc:sqlite:race.db", null, null)
+    //Class.forName("org.sqlite.JDBC")
+    //ConnectionPool.singleton("jdbc:sqlite:race.db", null, null)
+    Class.forName("com.mysql.jdbc.Driver")
+    ConnectionPool.singleton("jdbc:mysql://localhost/netkeiba", "root", null)
   }
 
   def main(args: Array[String]): Unit = {

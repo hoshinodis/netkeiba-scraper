@@ -6,18 +6,18 @@ object RaceInfoDao {
 
   def createTable()(implicit s: DBSession): Boolean = {
     sql"""create table if not exists race_info (
-  id integer primary key autoincrement,
+  id int auto_increment not null primary key,
 
   race_name     text    not null,
   surface       text    not null,
-  distance      integer not null,
+  distance      int     not null,
   weather       text    not null,
   surface_state text    not null,
 
   race_start    text    not null,
-  race_number   integer not null,
+  race_number   int     not null,
 
-  surface_score integer,
+  surface_score int,
   date          text    not null,
   place_detail  text    not null,
   race_class    text    not null
@@ -43,7 +43,7 @@ on
 
   def insert(ri: RaceInfo)(implicit s: DBSession): Int = {
     sql"""
-insert or replace into race_info (
+replace into race_info (
   race_name,
   surface,
   distance,
@@ -73,7 +73,7 @@ insert or replace into race_info (
 
   def lastRowId()(implicit s: DBSession): Int = {
     sql"""
-select last_insert_rowid() as last_rowid
+select last_insert_id() as last_rowid
 """.map(_.int("last_rowid")).single.apply().get
   }
 

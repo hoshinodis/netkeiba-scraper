@@ -7,23 +7,23 @@ object RaceResultDao {
   def createTable()(implicit s: DBSession): Boolean = {
     sql"""
 create table if not exists race_result (
-  race_id integer not null,
+  race_id int not null,
 
-  order_of_finish text    not null,
-  frame_number       integer not null,
-  horse_number       integer not null,
+  order_of_finish    text    not null,
+  frame_number       int     not null,
+  horse_number       int     not null,
   horse_id           text    not null,
   sex                text    not null,
-  age                integer not null,
+  age                int     not null,
   basis_weight       real    not null,
   jockey_id          text    not null,
   finishing_time     text    not null,
   length             text    not null,
-  speed_figure       integer,
+  speed_figure       int,
   pass               text    not null,
   last_phase         real,
   odds               real,
-  popularity         integer,
+  popularity         int,
   horse_weight       text    not null,
   remark             text,
   stable             text    not null,
@@ -74,7 +74,7 @@ on
 
   def insert(rr: RaceResult)(implicit s: DBSession): Int = {
     sql"""
-insert or replace into race_result (
+replace into race_result (
   race_id,
 
   order_of_finish,
