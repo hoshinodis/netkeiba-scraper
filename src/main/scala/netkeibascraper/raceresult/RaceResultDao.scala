@@ -33,8 +33,9 @@ create table if not exists race_result (
   primary key (race_id, horse_number),
   foreign key (race_id) references race_info (id)
 );""".execute.apply
+  }
+  def createIndex()(implicit s: DBSession): Boolean = {
 
-/*
     sql"""
 create index
   race_id_idx
@@ -69,7 +70,7 @@ create index
 on
   race_result (race_id, owner_id);
 """.execute.apply
-*/
+
   }
 
   def insert(rr: RaceResult)(implicit s: DBSession): Int = {

@@ -8,11 +8,11 @@ object FeatureDao {
   def createTable()(implicit s: DBSession): Boolean = {
     sql"""
 create table if not exists feature (
-  race_id integer not null,
-  horse_number  integer not null,
+  race_id int not null,
+  horse_number  int not null,
 
-  grade integer not null,
-  order_of_finish integer,
+  grade int not null,
+  order_of_finish int,
 
   horse_id text not null,
   jockey_id text not null,
@@ -61,7 +61,7 @@ create table if not exists feature (
   surfaceChanged real,
   gradeChanged real,
 
-  preMargin real,
+  preMargin text,
   femaleOnly real,
 
   primary key (race_id, horse_number)
@@ -72,7 +72,7 @@ create table if not exists feature (
   def insert(fg: FeatureGenerator)(implicit s: DBSession) = {
     import Util.position2cls
     sql"""
-insert or replace into feature (
+replace into feature (
   race_id,
   horse_number,
   grade,

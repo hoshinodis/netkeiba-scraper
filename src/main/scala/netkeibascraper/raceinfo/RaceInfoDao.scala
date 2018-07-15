@@ -22,8 +22,10 @@ object RaceInfoDao {
   place_detail  text    not null,
   race_class    text    not null
 );""".execute.apply
+  }
 
-/*
+  def createIndex()(implicit s: DBSession): Boolean = {
+
     sql"""
 create index
   date_idx
@@ -37,7 +39,6 @@ create index
 on
   race_info (id, date);
 """.execute.apply
-*/
 
   }
 

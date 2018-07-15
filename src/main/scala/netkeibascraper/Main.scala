@@ -31,7 +31,9 @@ object Main {
         initDBSetting()
         DB.localTx { implicit s =>
           RaceInfoDao.createTable()
+          //RaceInfoDao.createIndex()
           RaceResultDao.createTable()
+          //RaceResultDao.createIndex()
           PayoffDao.createTable()
           RowExtractor.extract()
         }
