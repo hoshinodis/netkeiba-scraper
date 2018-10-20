@@ -23,8 +23,8 @@ object RaceScraper {
     val re = """/race/(\d+)/""".r
 
     val nums =
-      io.Source.fromFile("race_url.txt").getLines.toList.
-        map{ s => val re(x) = re.findFirstIn(s).get; x }
+      io.Source.fromFile("race_url.txt").getLines.toList
+        .map{ s => val re(x) = re.findFirstIn(s).get; x }
 
     val urls = nums.map(s => "http://db.netkeiba.com/race/" + s)
 
